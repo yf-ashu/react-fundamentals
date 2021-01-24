@@ -3,22 +3,99 @@
 
 <body>
   <div id="root"></div>
-  <script src="https://unpkg.com/react@17.0.0/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+  <script src="https://unpkg.com/react@16.13.1/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.9.3/babel.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+
   <script type="text/babel">
     // 🐨 Make a function called `message` which returns the JSX we want to share
+    // function Message() {
+    //   return (
+    //     <div className="container">
+    //       <div className="message">Hello World</div>
+    //       <div className="message">Goodbye World</div>
+    //     </div>
+    //   )
+    // }
 
     // 🐨 use that function in place of the divs below with:
     // 💰 {message({children: 'Hello World'})} {message({children: 'Goodbye World'})}
-    const element = (
-      <div className="container">
-        <div className="message">Hello World</div>
-        <div className="message">Goodbye World</div>
-      </div>
-    )
+
+    //1
+    // function message(children) {
+    //   return (
+    //     <div className="container">
+    //       {children}
+    //     </div>
+    //   )
+    // }
+    // const element = (
+    //   <div className="container">
+    //     <div className="message">Hello World</div>
+    //     <div className="message">Goodbye World</div>
+    //   </div>
+    // )
+
+    //2
+    // function message({children}) {
+    //   return <div className="message">{children}</div>
+    // }
+    // const element = (
+    //   <div className="container">
+    //     {React.createElement(message, {children: 'Hello World'})}
+    //     {React.createElement(message, {children: 'Goodbye World'})}
+    //   </div>
+    // )
+
+    //3
+    //     const Message=({children}) =>{
+    //       return <div className="message">{children}</div>
+    //     }
+
+    // const element=(
+    //   <div className="container">
+    //         <Message>Hello World</Message>
+    //         <Message>Goodbye World</Message>
+    //   </div>)
+
+
+    //3. 💯 Runtime validation with PropTypes
+
+    // const PropTypes = {
+    //   string(props, propName, componentName) {
+    //     console.log('123',{props, propName, componentName})
+    //     return new Error('Some useful error message here')
+
+    //     if (typeof props[propName] !== 'string') {
+    //       return new Error('Some useful error message here')
+    //     }
+    //   },
+    // }
+    // const Message = ({subject, greeting}) => {
+    //   return (
+    //     <div className="message">
+    //       {greeting}, {subject}
+    //     </div>
+    //   )
+    // }
+    // // proptype 要在 element 上面才吃得到
+    // Message.propTypes = {
+    //   subject: PropTypes.string,
+    //   greeting: PropTypes.string,
+    // }
+    // const element = (
+    //   <div className="container">
+    //     <Message greeting="Hello" subject={123}/>
+    //     <Message greeting="Goodbye" subject="World" />
+    //   </div>
+    // )
+
+
+
 
     // 💯 This is only the first step to making actual React components. The rest is in the extra credit!
+    // ReactDOM.render(message(), document.getElementById('root'))
     ReactDOM.render(element, document.getElementById('root'))
   </script>
 </body>
